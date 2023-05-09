@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "207fe8f2-49ed-47d9-9bf1-2c38d3abb178": {
+      "ProjectGuid": "207fe8f2-49ed-47d9-9bf1-2c38d3abb178",
+      "DisplayName": "PizzaStore",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
