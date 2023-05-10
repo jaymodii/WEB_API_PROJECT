@@ -1,51 +1,71 @@
 ﻿namespace PizzaStore.DB;
-
-public record Pizza
-{
-    public int Id { get; set; }
-    public string? Name { get; set; }
-}
+using Entity.Data;
+using Entity.Models;
+//public record Pizza
+//{
+//    public int Id { get; set; }
+//    public string? Name { get; set; }
+//}
 
 public class PizzaDB
 {
-    private static List<Pizza> _pizzas = new List<Pizza>()
-   {
-     new Pizza{ Id=1, Name="Montemagno, Pizza shaped like a great mountain" },
-     new Pizza{ Id=2, Name="The Galloway, Pizza shaped like a submarine, silent but deadly"},
-     new Pizza{ Id=3, Name="The Noring, Pizza shaped like a Viking helmet, where's the mead"}
-   };
+   // private static List<Pizza> _pizzas = new List<Pizza>()
+   //{
+   //  new Pizza{ Id=1, Name="Montemagno, Pizza shaped like a great mountain" },
+   //  new Pizza{ Id=2, Name="The Galloway, Pizza shaped like a submarine, silent but deadly"},
+   //  new Pizza{ Id=3, Name="The Noring, Pizza shaped like a Viking helmet, where's the mead"}
+   //};
 
-    public static List<Pizza> GetPizzas()
+
+    private readonly PizzaDbContext _context;
+    public PizzaDB(PizzaDbContext db)
     {
-        return _pizzas;
+        _context = db;
     }
 
-    public static Pizza? GetPizza(int id)
+    public List<PizzaInfo> GetPizzas()
     {
-        return _pizzas.SingleOrDefault(pizza => pizza.Id == id);
+        List<PizzaInfo> pizzas = _context.PizzaInfos.ToList();
+        return pizzas;
     }
 
-    public static Pizza CreatePizza(Pizza pizza)
+    public PizzaInfo? GetPizza(int id)
     {
-        _pizzas.Add(pizza);
-        return pizza;
+        return _context.PizzaInfos.SingleOrDefault(pizza => pizza.Id == id);
     }
 
-    public static Pizza UpdatePizza(Pizza update)
+    public PizzaInfo CreatePizza(PizzaInfo pizza)
     {
-        _pizzas = _pizzas.Select(pizza =>
+        PizzaInfo p = new PizzaInfo();
+
+        p.Name = pizza.Name;
+        p.Description = pizza.Description;
+        p.Id = pizza.Id;
+        _context.PizzaInfos.Add(p);
+        _context.SaveChanges();
+        return p;
+    }
+
+    public PizzaInfo? UpdatePizza(PizzaInfo update)
+    {
+      PizzaInfo? pizza=_context.PizzaInfos.Find(update.Id);
+    if(pizza != null)
         {
-            if (pizza.Id == update.Id)
-            {
-                pizza.Name = update.Name;
-            }
-            return pizza;
-        }).ToList();
-        return update;
+            pizza.Name = update.Name;
+            pizza.Description = update.Description;
+            _context.PizzaInfos.Update(pizza);
+            _context.SaveChanges();
+            return update;
+        }
+       
+            return null;
+        
     }
 
-    public static void RemovePizza(int id)
+    public void RemovePizza(long id)
     {
-        _pizzas = _pizzas.FindAll(pizza => pizza.Id != id).ToList();
+        PizzaInfo? pizza = _context.PizzaInfos.Find(id);
+        _context.PizzaInfos.Remove(pizza);
+        _context.SaveChanges();
     }
 }

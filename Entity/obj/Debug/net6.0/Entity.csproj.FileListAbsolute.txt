@@ -11,3 +11,4 @@ C:\Jay Modi\WEB APi\Entity\obj\Debug\net6.0\ref\Entity.dll
 C:\Jay Modi\WEB APi\Entity\obj\Debug\net6.0\Entity.pdb
 C:\Jay Modi\WEB APi\Entity\bin\Debug\net6.0\Entity.runtimeconfig.json
 C:\Jay Modi\WEB APi\Entity\obj\Debug\net6.0\Entity.genruntimeconfig.cache
+C:\Jay Modi\WEB APi\Entity\obj\Debug\net6.0\Entity.csproj.AssemblyReference.cache

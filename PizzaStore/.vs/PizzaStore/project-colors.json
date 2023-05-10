@@ -5,7 +5,17 @@
       "ProjectGuid": "207fe8f2-49ed-47d9-9bf1-2c38d3abb178",
       "DisplayName": "PizzaStore",
       "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "7dde2cc5-3426-430f-835d-ea78dbff2bb7": {
+      "ProjectGuid": "7dde2cc5-3426-430f-835d-ea78dbff2bb7",
+      "DisplayName": "Entity",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }
